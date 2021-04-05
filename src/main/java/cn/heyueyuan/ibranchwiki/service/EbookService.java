@@ -8,7 +8,7 @@ import cn.heyueyuan.ibranchwiki.request.EbookSaveReq;
 import cn.heyueyuan.ibranchwiki.response.EbookQueryResp;
 import cn.heyueyuan.ibranchwiki.response.PageResp;
 import cn.heyueyuan.ibranchwiki.utils.CopyUtil;
-import cn.heyueyuan.ibranchwiki.utils.snowFlake;
+import cn.heyueyuan.ibranchwiki.utils.SnowFlake;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
@@ -53,7 +53,7 @@ public class EbookService {
     public void save(EbookSaveReq req) {
         Ebook ebook = CopyUtil.copy(req, Ebook.class);
         if (ObjectUtils.isEmpty(req.getId())) {
-            ebook.setId(snowFlake.nextId());
+            ebook.setId(SnowFlake.nextId());
             ebookMapper.insert(ebook);
         } else {
             ebookMapper.updateByPrimaryKey(ebook);

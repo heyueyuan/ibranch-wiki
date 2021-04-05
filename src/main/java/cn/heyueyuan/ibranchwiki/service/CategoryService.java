@@ -8,7 +8,7 @@ import cn.heyueyuan.ibranchwiki.request.CategorySaveReq;
 import cn.heyueyuan.ibranchwiki.response.CategoryQueryResp;
 import cn.heyueyuan.ibranchwiki.response.PageResp;
 import cn.heyueyuan.ibranchwiki.utils.CopyUtil;
-import cn.heyueyuan.ibranchwiki.utils.snowFlake;
+import cn.heyueyuan.ibranchwiki.utils.SnowFlake;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
@@ -37,6 +37,7 @@ public class CategoryService {
 
         return list;
     }
+
     public PageResp<CategoryQueryResp> list(CategoryQueryReq req) {
         CategoryExample categoryExample = new CategoryExample();
         categoryExample.setOrderByClause("sort asc");
@@ -59,7 +60,7 @@ public class CategoryService {
     public void save(CategorySaveReq req) {
         Category category = CopyUtil.copy(req, Category.class);
         if (ObjectUtils.isEmpty(req.getId())) {
-            category.setId(snowFlake.nextId());
+            category.setId(SnowFlake.nextId());
             categoryMapper.insert(category);
         } else {
             categoryMapper.updateByPrimaryKey(category);

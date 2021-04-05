@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 public class EbookQueryReq extends PageReq {
     private Long id;
 
-//    @NotNull(message = "Can not be empty ")
+    //    @NotNull(message = "Can not be empty ")
     private String name;
 
     private Long categoryId2;

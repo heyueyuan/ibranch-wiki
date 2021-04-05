@@ -2,13 +2,11 @@ package cn.heyueyuan.ibranchwiki.utils;
 
 import org.springframework.stereotype.Component;
 
-import java.text.ParseException;
-
 /**
  * Twitter的分布式自增ID雪花算法
  **/
 @Component
-public class snowFlake {
+public class SnowFlake {
 
     /**
      * 起始的时间戳
@@ -52,8 +50,8 @@ public class snowFlake {
         if (machineId > MAX_MACHINE_NUM || machineId < 0) {
             throw new IllegalArgumentException("machineId can't be greater than MAX_MACHINE_NUM or less than 0");
         }
-        snowFlake.datacenterId = datacenterId;
-        snowFlake.machineId = machineId;
+        SnowFlake.datacenterId = datacenterId;
+        SnowFlake.machineId = machineId;
     }
 
     /**

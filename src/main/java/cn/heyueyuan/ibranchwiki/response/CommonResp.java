@@ -23,9 +23,11 @@ public class CommonResp<T> {
     public void setMessage(String message) {
         this.message = message;
     }
+
     public T getContent() {
         return content;
     }
+
     public void setContent(T content) {
         this.content = content;
     }
